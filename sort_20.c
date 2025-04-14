@@ -10,7 +10,7 @@ void	sort_20(t_stack **s_a, t_stack **s_b)
 	while (size > 3)
 	{
 		position(*s_a);
-		min = find_min(*s_a);
+		min = ft_find_min(*s_a);
 		mid = stack_size(*s_a) / 2;
 		if (min->position == 0)
 			pb(s_b, s_a);

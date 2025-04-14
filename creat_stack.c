@@ -1,6 +1,6 @@
 #include "sort.h"
 
-static t_stack	*ft_creat_node(int value)
+static t_stack	*ft_create_stack_node(int value)
 {
 	t_stack	*top;
 
@@ -15,7 +15,7 @@ static t_stack	*ft_creat_node(int value)
 	return (top);
 }
 
-static int	check_string(char *str)
+static int	ft_is_string(char *str)
 {
 	int	i;
 
@@ -29,7 +29,7 @@ static int	check_string(char *str)
 	return (0);
 }
 
-static t_stack	*add_new(char **str, t_stack *top)
+static t_stack	*ft_add_new_nod(char **str, t_stack *top)
 {
 	t_stack	*tmp;
 	long	a;
@@ -46,10 +46,10 @@ static t_stack	*add_new(char **str, t_stack *top)
 			return (ft_free_list(top), ft_free(str), NULL);
 		}
 		tmp = top;
-		top = ft_creat_node(a);
+		top = ft_create_stack_node(a);
 		if (top == NULL)
 			return (ft_free_list(tmp), ft_free(str), NULL);
-		if (check_rep(top, tmp) == -1)
+		if (check_duplicates(top, tmp) == -1)
 			return (free(top), ft_free_list(tmp), ft_free(str), NULL);
 		top->next = tmp;
 		j--;
@@ -57,7 +57,7 @@ static t_stack	*add_new(char **str, t_stack *top)
 	return (top);
 }
 
-t_stack	*ft_creat_stack(char **av, int i)
+t_stack	*ft_init_stack(char **av, int i)
 {
 	t_stack	*top;
 	char	**str;
@@ -65,15 +65,15 @@ t_stack	*ft_creat_stack(char **av, int i)
 	top = NULL;
 	while (i > 0)
 	{
-		if (av[i][0] == '\0' || check_string(av[i]) == 0)
+		if (av[i][0] == '\0' || ft_is_string(av[i]) == 0)
 		{
 			write(2, "Error\n", 6);
 			return (ft_free_list(top), NULL);
 		}
-		str = check_input(av[i]);
+		str = validate_input(av[i]);
 		if (str == NULL)
 			return (ft_free_list(top), NULL);
-		top = add_new(str, top);
+		top = ft_add_new_nod(str, top);
 		if (top == NULL)
 			return (ft_free_list(top), NULL);
 		ft_free(str);

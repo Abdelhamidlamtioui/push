@@ -1,6 +1,6 @@
 #include "sort.h"
 
-t_stack	*find_min(t_stack *s_a)
+t_stack	*ft_find_min(t_stack *s_a)
 {
 	t_stack	*min;
 
@@ -39,7 +39,7 @@ void	find_rank(t_stack *s_a)
 	}
 }
 
-t_stack	*find_maxx(t_stack *s_a)
+t_stack	*ft_find_max(t_stack *s_a)
 {
 	t_stack	*max;
 

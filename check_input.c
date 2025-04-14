@@ -1,6 +1,6 @@
 #include "sort.h"
 
-static char	check_digit(char c)
+static char	 ft_is_digit(char c)
 {
 	if (!(c >= '0' && c <= '9'))
 	{
@@ -10,7 +10,7 @@ static char	check_digit(char c)
 	return (c);
 }
 
-int	check_rep(t_stack *top, t_stack *tmp)
+int	check_duplicates(t_stack *top, t_stack *tmp)
 {
 	if (!top || !tmp)
 		return (0);
@@ -40,7 +40,7 @@ int	count_str(char **s)
 	return (i);
 }
 
-char	**check_input(char *str)
+char	**validate_input(char *str)
 {
 	int		i;
 	int		j;
@@ -57,11 +57,11 @@ char	**check_input(char *str)
 		{
 			if (p[i][j] == '-' || p[i][j] == '+')
 				j++;
-			if (check_digit(p[i][j]) == 0)
+			if ( ft_is_digit(p[i][j]) == 0)
 				return (ft_free(p), NULL);
-			if (check_digit(p[i][j]) != 0 && (p[i][j + 1] == '-'
+			if ( ft_is_digit(p[i][j]) != 0 && (p[i][j + 1] == '-'
 						|| p[i][j + 1] == '+'))
-				return (ft_free(p), check_digit(0), NULL);
+				return (ft_free(p),  ft_is_digit(0), NULL);
 			j++;
 		}
 		i++;

@@ -17,15 +17,15 @@ typedef struct s_stack
 // check input
 char	**ft_split(char const *s, char c);
 long	ft_atoi(const char *nptr);
-char	**check_input(char *str);
-int		check_rep(t_stack *top, t_stack *tmp);
+char	**validate_input(char *str);
+int		check_duplicates(t_stack *top, t_stack *tmp);
 int		count_str(char **s);
 int		ft_sorted(t_stack *s_a);
 //free
 void	ft_free_list(t_stack *s_a);
 void	ft_free(char **p);
 //creat t_stack
-t_stack	*ft_creat_stack(char **av, int ac);
+t_stack	*ft_init_stack(char **av, int ac);
 //operation
 void	rra(t_stack **s_a);
 void	rrb(t_stack **s_b);
@@ -45,8 +45,8 @@ void	sort_20(t_stack **s_a, t_stack **s_b);
 void	find_rank(t_stack *s_a);
 // utill fct
 int		stack_size(t_stack *top);
-t_stack	*find_min(t_stack *s_a);
+t_stack	*ft_find_min(t_stack *s_a);
 void	position(t_stack *s_a);
-t_stack	*find_maxx(t_stack *s_a);
+t_stack	*ft_find_max(t_stack *s_a);
 
 #endif
